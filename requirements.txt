@@ -1,0 +1,16 @@
+numpy
+pandas
+pyyaml
+torch
+transformers
+chromadb
+fastapi
+timm
+pillow
+mlflow
+dagshub
+uvicorn
+python-dotenv
+certifi
+
+-e .
