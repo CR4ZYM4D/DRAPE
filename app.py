@@ -77,7 +77,7 @@ async def search(q: str, top_k: int = Query(5, ge=1, le=50)):
                     cached_attr_vec = np.array(cached_data["query_attr_vec"])
                     overlap = cosine_overlap(query_attr_vec, cached_attr_vec)
                     
-                    if overlap >= 0.90:
+                    if overlap >= 0.95:
                         logging.info(f"Semantic Cache Hit! Overlap: {overlap:.4f} with cached query '{cached_data['query']}'")
                         return {"query": q, "results": cached_data["results"][:top_k], "cached": True}
             except Exception as cache_err:
