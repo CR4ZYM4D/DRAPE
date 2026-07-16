@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAPE - AI Fashion Retrieval</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --text-color: #ffffff;
+            --accent-color: #6366f1;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 2rem;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #818cf8, #e879f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            font-weight: 300;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            padding-right: 120px;
+            font-size: 1.1rem;
+            color: white;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-top: 1rem;
+            accent-color: var(--accent-color);
+        }
+        
+        .topk-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+            padding: 0 10px;
+        }
+        
+        button {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            bottom: 8px;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .loader {
+            display: none;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 2rem auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .gallery.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background: #1a1c23;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-info {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score-badge {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .error-msg {
+            color: #f87171;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DRAPE</h1>
+        <p class="subtitle">Multimodal Fashion & Context Retrieval</p>
+    </header>
+
+    <div class="search-container">
+        <div class="input-wrapper">
+            <input type="text" id="searchInput" placeholder="Describe an outfit, color, or vibe..." onkeypress="handleKeyPress(event)">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        
+        <input type="range" id="topkSlider" min="1" max="50" value="5" oninput="document.getElementById('topkValue').innerText = this.value">
+        <div class="topk-label">
+            <span>Results to return:</span>
+            <span id="topkValue" style="color: white; font-weight: bold;">5</span>
+        </div>
+    </div>
+    
+    <div class="loader" id="loader"></div>
+    <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+
+    <div class="gallery" id="gallery">
+        <!-- Results injected here -->
+    </div>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        async function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            const topk = document.getElementById('topkSlider').value;
+            if (!query) return;
+
+            const gallery = document.getElementById('gallery');
+            const loader = document.getElementById('loader');
+            const errorMsg = document.getElementById('errorMsg');
+
+            // Reset UI
+            gallery.classList.remove('visible');
+            gallery.innerHTML = '';
+            errorMsg.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                // Fetch using relative URL to avoid CORS
+                const response = await fetch(`/search?q=${encodeURIComponent(query)}&top_k=${topk}`);
+                if (!response.ok) throw new Error('API Error');
+                
+                const data = await response.json();
+                
+                // Hide loader
+                loader.style.display = 'none';
+                
+                // Populate Gallery
+                if (data.results && data.results.length > 0) {
+                    data.results.forEach((res, index) => {
+                        // Extract filename to use as relative path for static serving or mock
+                        const fileName = res.image_path.split('/').pop();
+                        // Assuming images are served statically from data/raw/images via a static route,
+                        // or for now, we just point to a placeholder if static routing isn't setup
+                        const imgSrc = `data/raw/images/${fileName}`;
+                        
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        
+                        card.innerHTML = `
+                            <div class="card-img-container" style="cursor: pointer;" onclick="openModal('${imgSrc}')">
+                                <!-- Fallback to a placeholder if the local image path fails -->
+                                <img src="${imgSrc}" onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400&h=500'" alt="Fashion Item">
+                            </div>
+                            <div class="card-info">
+                                <span style="font-size: 0.9rem; color: #d1d5db;">Result #${index + 1}</span>
+                                <div class="score-badge">Score: ${res.score.toFixed(2)}</div>
+                            </div>
+                        `;
+                        gallery.appendChild(card);
+                    });
+                    
+                    // Trigger fade in
+                    setTimeout(() => gallery.classList.add('visible'), 50);
+                } else {
+                    errorMsg.innerText = "No results found. Have you indexed your data?";
+                    errorMsg.style.display = 'block';
+                }
+                
+            } catch (err) {
+                loader.style.display = 'none';
+                errorMsg.style.display = 'block';
+                console.error(err);
+            }
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImg");
+            modalImg.src = src;
+            modal.style.display = "flex";
+            // Tiny delay to allow display: flex to apply before opacity transition
+            setTimeout(() => modal.classList.add("show"), 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.classList.remove("show");
+            setTimeout(() => modal.style.display = "none", 300); // wait for transition
+        }
+    </script>
+</body>
+</html>

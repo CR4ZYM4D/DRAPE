@@ -12,5 +12,14 @@ dagshub
 uvicorn
 python-dotenv
 certifi
+pyarrow
+scikit-learn
+torch
+redis
+pytest
+pytest-cov
+httpx
+datasets
+sentencepiece
 
 -e .
