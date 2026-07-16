@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "query": "A person in a bright yellow raincoat.",
+    "type": "original"
+  },
+  {
+    "id": 2,
+    "query": "Professional business attire inside a modern office.",
+    "type": "original"
+  },
+  {
+    "id": 3,
+    "query": "Someone wearing a blue shirt sitting on a park bench.",
+    "type": "original"
+  },
+  {
+    "id": 4,
+    "query": "Casual weekend outfit for a city walk.",
+    "type": "original"
+  },
+  {
+    "id": 5,
+    "query": "A red tie and a white shirt in a formal setting.",
+    "type": "original"
+  },
+  {
+    "id": 6,
+    "query": "A black raincoat paired with a grey dress in a relaxed look.",
+    "type": "compositional"
+  },
+  {
+    "id": 7,
+    "query": "A person wearing a brown jacket.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 8,
+    "query": "A purple jacket paired with a blue tie in a professional look.",
+    "type": "compositional"
+  },
+  {
+    "id": 9,
+    "query": "A very elegant outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 10,
+    "query": "A person wearing a beige pants.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 11,
+    "query": "Someone in a pink coat at the street.",
+    "type": "semantic"
+  },
+  {
+    "id": 12,
+    "query": "A very casual outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 13,
+    "query": "A person wearing a purple pants.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 14,
+    "query": "A brown tie paired with a yellow sweater in a formal look.",
+    "type": "compositional"
+  },
+  {
+    "id": 15,
+    "query": "Casual attire suitable for the home.",
+    "type": "contextual"
+  },
+  {
+    "id": 16,
+    "query": "Professional attire suitable for the gym.",
+    "type": "contextual"
+  },
+  {
+    "id": 17,
+    "query": "A very casual outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 18,
+    "query": "A person wearing a brown scarf.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 19,
+    "query": "A very formal outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 20,
+    "query": "A very elegant outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 21,
+    "query": "A purple jacket paired with a pink shirt in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 22,
+    "query": "Professional attire suitable for the park.",
+    "type": "contextual"
+  },
+  {
+    "id": 23,
+    "query": "A person wearing a green dress.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 24,
+    "query": "A person wearing a white hat.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 25,
+    "query": "Someone in a purple t-shirt at the park.",
+    "type": "semantic"
+  },
+  {
+    "id": 26,
+    "query": "A person wearing a green coat.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 27,
+    "query": "A person wearing a yellow dress.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 28,
+    "query": "Formal attire suitable for the street.",
+    "type": "contextual"
+  },
+  {
+    "id": 29,
+    "query": "A person wearing a green blouse.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 30,
+    "query": "Someone in a red jacket at the beach.",
+    "type": "semantic"
+  },
+  {
+    "id": 31,
+    "query": "Minimalist attire suitable for the home.",
+    "type": "contextual"
+  },
+  {
+    "id": 32,
+    "query": "A very minimalist outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 33,
+    "query": "Formal attire suitable for the park.",
+    "type": "contextual"
+  },
+  {
+    "id": 34,
+    "query": "Someone in a brown sweater at the street.",
+    "type": "semantic"
+  },
+  {
+    "id": 35,
+    "query": "A person wearing a black jacket.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 36,
+    "query": "Minimalist attire suitable for the gym.",
+    "type": "contextual"
+  },
+  {
+    "id": 37,
+    "query": "Someone in a black t-shirt at the restaurant.",
+    "type": "semantic"
+  },
+  {
+    "id": 38,
+    "query": "Professional attire suitable for the beach.",
+    "type": "contextual"
+  },
+  {
+    "id": 39,
+    "query": "A white sweater paired with a pink pants in a relaxed look.",
+    "type": "compositional"
+  },
+  {
+    "id": 40,
+    "query": "Someone in a brown t-shirt at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 41,
+    "query": "A blue raincoat paired with a brown blouse in a relaxed look.",
+    "type": "compositional"
+  },
+  {
+    "id": 42,
+    "query": "A purple tie paired with a red raincoat in a sporty look.",
+    "type": "compositional"
+  },
+  {
+    "id": 43,
+    "query": "Someone in a grey tie at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 44,
+    "query": "A very sporty outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 45,
+    "query": "Someone in a yellow jacket at the restaurant.",
+    "type": "semantic"
+  },
+  {
+    "id": 46,
+    "query": "Someone in a brown sweater at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 47,
+    "query": "Someone in a green scarf at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 48,
+    "query": "Professional attire suitable for the home.",
+    "type": "contextual"
+  },
+  {
+    "id": 49,
+    "query": "Casual attire suitable for the office.",
+    "type": "contextual"
+  },
+  {
+    "id": 50,
+    "query": "A brown hat paired with a white coat in a casual look.",
+    "type": "compositional"
+  },
+  {
+    "id": 51,
+    "query": "A person wearing a beige blouse.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 52,
+    "query": "Minimalist attire suitable for the home.",
+    "type": "contextual"
+  },
+  {
+    "id": 53,
+    "query": "A purple coat paired with a black dress in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 54,
+    "query": "Someone in a blue hat at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 55,
+    "query": "A very formal outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 56,
+    "query": "A very casual outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 57,
+    "query": "Someone in a black tie at the restaurant.",
+    "type": "semantic"
+  },
+  {
+    "id": 58,
+    "query": "A very sporty outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 59,
+    "query": "A person wearing a beige hat.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 60,
+    "query": "A beige sweater paired with a pink skirt in a sporty look.",
+    "type": "compositional"
+  },
+  {
+    "id": 61,
+    "query": "A very formal outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 62,
+    "query": "A very relaxed outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 63,
+    "query": "A very minimalist outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 64,
+    "query": "Someone in a white blouse at the restaurant.",
+    "type": "semantic"
+  },
+  {
+    "id": 65,
+    "query": "Someone in a yellow raincoat at the beach.",
+    "type": "semantic"
+  },
+  {
+    "id": 66,
+    "query": "Someone in a white blouse at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 67,
+    "query": "A purple blouse paired with a red tie in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 68,
+    "query": "Sporty attire suitable for the office.",
+    "type": "contextual"
+  },
+  {
+    "id": 69,
+    "query": "Someone in a beige t-shirt at the park.",
+    "type": "semantic"
+  },
+  {
+    "id": 70,
+    "query": "Someone in a red raincoat at the restaurant.",
+    "type": "semantic"
+  },
+  {
+    "id": 71,
+    "query": "A person wearing a green pants.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 72,
+    "query": "Minimalist attire suitable for the beach.",
+    "type": "contextual"
+  },
+  {
+    "id": 73,
+    "query": "Someone in a green hat at the street.",
+    "type": "semantic"
+  },
+  {
+    "id": 74,
+    "query": "A person wearing a yellow skirt.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 75,
+    "query": "A blue t-shirt paired with a brown tie in a formal look.",
+    "type": "compositional"
+  },
+  {
+    "id": 76,
+    "query": "A person wearing a brown blouse.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 77,
+    "query": "Someone in a pink jacket at the gym.",
+    "type": "semantic"
+  },
+  {
+    "id": 78,
+    "query": "Someone in a black shirt at the home.",
+    "type": "semantic"
+  },
+  {
+    "id": 79,
+    "query": "Someone in a red pants at the beach.",
+    "type": "semantic"
+  },
+  {
+    "id": 80,
+    "query": "A red blouse paired with a brown tie in a casual look.",
+    "type": "compositional"
+  },
+  {
+    "id": 81,
+    "query": "A very relaxed outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 82,
+    "query": "Someone in a grey pants at the beach.",
+    "type": "semantic"
+  },
+  {
+    "id": 83,
+    "query": "A white tie paired with a green scarf in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 84,
+    "query": "Someone in a blue raincoat at the park.",
+    "type": "semantic"
+  },
+  {
+    "id": 85,
+    "query": "A person wearing a red blouse.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 86,
+    "query": "Formal attire suitable for the restaurant.",
+    "type": "contextual"
+  },
+  {
+    "id": 87,
+    "query": "A very formal outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 88,
+    "query": "A pink tie paired with a beige blouse in a sporty look.",
+    "type": "compositional"
+  },
+  {
+    "id": 89,
+    "query": "A very relaxed outfit for today.",
+    "type": "style"
+  },
+  {
+    "id": 90,
+    "query": "A yellow scarf paired with a pink jacket in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 91,
+    "query": "A person wearing a blue jacket.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 92,
+    "query": "A red sweater paired with a beige shirt in a professional look.",
+    "type": "compositional"
+  },
+  {
+    "id": 93,
+    "query": "Someone in a yellow hat at the street.",
+    "type": "semantic"
+  },
+  {
+    "id": 94,
+    "query": "A yellow sweater paired with a purple dress in a casual look.",
+    "type": "compositional"
+  },
+  {
+    "id": 95,
+    "query": "A person wearing a black jacket.",
+    "type": "attribute-specific"
+  },
+  {
+    "id": 96,
+    "query": "Formal attire suitable for the restaurant.",
+    "type": "contextual"
+  },
+  {
+    "id": 97,
+    "query": "Someone in a grey pants at the park.",
+    "type": "semantic"
+  },
+  {
+    "id": 98,
+    "query": "Someone in a beige pants at the street.",
+    "type": "semantic"
+  },
+  {
+    "id": 99,
+    "query": "A brown jacket paired with a yellow coat in a elegant look.",
+    "type": "compositional"
+  },
+  {
+    "id": 100,
+    "query": "A person wearing a pink shirt.",
+    "type": "attribute-specific"
+  }
+]
