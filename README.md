@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=30&pause=1000&color=6366f1&center=true&vCenter=true&width=700&lines=DRAPE+-+AI+Fashion+Retrieval;Glance MLE Intern Assignment;Production-Grade+ML+Pipeline;End-to-End+MLOps+%7C+FastAPI+%7C+ChromaDB" alt="Loading Title Card" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=30&pause=1000&color=6366f1&center=true&vCenter=true&width=700&lines=DRAPE+-+AI+Fashion+Retrieval;Glance MLE Intern Assignment;Production-Grade+ML+Pipeline;End-to-End+MLOps+%7C+FastAPI+%7C+ChromaDB" alt="DRAPE | Glance MLE Intern Assignment" />
 
 <br/>
 
