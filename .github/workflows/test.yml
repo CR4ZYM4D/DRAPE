@@ -25,5 +25,4 @@ jobs:
         pip install pytest pytest-cov httpx
         
     - name: Run tests with pytest
-      run: |
-        run: python -m pytest tests/ --cov-report=term-missing
+      run: python -m pytest tests/ --cov-report=term-missing
