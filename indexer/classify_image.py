@@ -11,6 +11,8 @@ from models.attribute_classifier import AttributeClassifier
 from logger.logger import logging
 from exception.exception import ProjectError
 
+CHECKPOINT_PATH = os.getenv("MODEL_CLASSIFIER_PATH", "models/weights/attribute_classifier.pth")
+
 class ImageClassifier:
 
     """ class for image classifier to transform and label the images """
@@ -52,7 +54,7 @@ class ImageClassifier:
 # singleton instance
 classifier_instance = None
 
-def get_classifier(checkpoint_path="models/checkpoints/classifier_final.pt"):
+def get_classifier(checkpoint_path=CHECKPOINT_PATH):
     global classifier_instance
     if classifier_instance is None:
         classifier_instance = ImageClassifier(checkpoint_path)

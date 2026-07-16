@@ -131,7 +131,7 @@ def run_pipeline():
             logging.info(" ----- Evaluating Model ----- ")
             precision, recall, f1 = evaluate_model(model, val_loader, device)
 
-            logging.info(f" ----- Eval Results -> Precision: {precision:.4f} | Recall: {recall:.4f} | F1: {f1:.4f } ----- ")
+            logging.info(f" ----- Eval Results -> Precision: {precision:.4f} | Recall: {recall:.4f} | F1: {f1:.4f} ----- ")
             mlflow.log_metric("val_precision", precision)
             mlflow.log_metric("val_recall", recall)
             mlflow.log_metric("val_f1", f1)
@@ -159,7 +159,7 @@ def run_pipeline():
                 logging.info(f"New model outperforms previous F1 ({f1:.4f} > {best_f1:.4f}). Registering!")
 
                 model_info = mlflow.pytorch.log_model(
-                    model, "model", registered_model_name=model_name, serialization_format="pickle"
+                    pytorch_model = model, registered_model_name=model_name, serialization_format="pickle"
                 )
                 new_version = model_info.registered_model_version
 
@@ -170,6 +170,23 @@ def run_pipeline():
                 )
             else:
                 logging.info(f" ----- New model did not outperform (F1: {f1:.4f} <= {best_f1:.4f}). Logging but not registering as Production. ----- ")
+
+                try:
+                    versions = client.search_model_versions(f"name='{model_name}'")
+                    production_version = next((v for v in versions if v.current_stage == "Production"), None)
+
+                    if production_version:
+                        run_id = production_version.run_id
+                        logging.info(f" ----- Found Production model (Run ID: {run_id}). Downloading ----- ")
+
+                        # Download model state dict
+                        loaded_model = mlflow.pytorch.load_model(f"models:/{model_name}/Production")
+                        torch.save(loaded_model.state_dict(), CHECKPOINT_PATH)
+                        logging.info(f" ----- Model successfully cached to {CHECKPOINT_PATH} ----- ")
+                    else:
+                        logging.warning(" ----- No Production model found in MLflow. Falling back to local/untrained weights. ----- ")
+                except Exception as mlf_err:
+                    logging.warning(f" ----- MLflow connection error: {mlf_err}. Using existing local weights if available. ----- ")
 
         logging.info(" ----- Training pipeline complete. ----- ")
 
