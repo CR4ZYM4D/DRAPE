@@ -8,7 +8,7 @@ GARMENT_TYPES = ['shirt, blouse', 'top, t-shirt, sweatshirt', 'sweater', 'cardig
 
 COLORS = ["red", "blue", "green", "yellow", "orange", "purple", "indigo", "pink", "black", "white", "grey", "brown", "beige", "teal", "burgundy"]
 
-CONTEXTS = ["casual", "formal", "workwear", "sports", "night_out", "outdoor", "sleep"]
+CONTEXTS = ["office", "park", "street", "home", "gym", "beach", "restaurant"]
 
 STYLES = ["minimalist", "tailored", "sporty", "relaxed", "dramatic", "bold", "elegant"]
 

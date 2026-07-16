@@ -1,5 +1,5 @@
 import sys
-
+import inspect
 '''
     File to create the exception class 
 '''
@@ -13,8 +13,14 @@ class ProjectError(Exception):
         self.error_message = error_message
         _, _, self.exception_traceback = error_details.exc_info()
 
-        self.file_name, self.line_num = self.exception_traceback.tb_frame.f_code.co_filename, self.exception_traceback.tb_lineno
-
+        if self.exception_traceback is not None:
+            self.file_name = self.exception_traceback.tb_frame.f_code.co_filename
+            self.line_num = self.exception_traceback.tb_lineno
+        else:
+                        
+            caller_frame = inspect.currentframe().f_back
+            self.file_name = caller_frame.f_code.co_filename if caller_frame else "Unknown"
+            self.line_num = caller_frame.f_lineno if caller_frame else 0
 
     def __str__(self):
 
